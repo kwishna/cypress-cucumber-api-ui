@@ -1,4 +1,4 @@
-# Cypress 2024 v13.13 - Testing tool for modern application
+# Cypress (v13.13) - Testing tool for modern application
 
 Re-learning cypress again with new enhanced cypress capabilities to refresh the concept.
 
