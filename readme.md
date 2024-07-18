@@ -1,4 +1,4 @@
-# Cypress Refresh 2024
+# Cypress 2024 v13.13 - Testing tool for modern application
 
 Re-learning cypress again with new enhanced cypress capabilities to refresh the concept.
 
@@ -8,16 +8,56 @@ This project is a comprehensive Cypress-based automation framework designed for 
 
 ## Features
 
-- End-to-End Testing
-- API Testing
-- Accessibility Testing
-- Cucumber BDD Integration
-- Allure Reporting
-- Mochawesome Reporting
-- Multi-browser Testing
-- Parallel Test Execution
-- Drag and Drop Testing
-- Excel Data Handling
+#### Test capabilities
+    - UI Testing
+    - API Testing
+    - Accessibility Testing
+
+#### Reporting capabilities
+    - Allure Reporting
+    - Mochawesome Reporting
+    - Cucumber Reporting
+
+#### Assertions capabilities
+    - chaijs (should, expect)
+
+#### Test Runner
+    - Cucumber BDD
+    - Mocha (cypress in-built)
+
+#### Others
+    - Multi-browser testing
+    - Parallel test execution
+    - Data-driven testing
+
+#### Misc
+    - Drag and Drop Testing
+    - Iframe handling
+    - Hover capabilities
+    - Shadow root handling
+    - JQuery API support
+    - Stub, Spy, Mock
+    - Intercept routes
+    - WebSocket protocol
+    - Chrome Devtools
+    - Event handling
+    - Excel Data Handling
+    - Testing-library integeration
+    - cypress-wait-until
+    - cypress-recurse
+    - chai json schema validation
+    - Failure retry
+    - Video recording
+    - Execution step snapshots
+
+#### Limitations
+    - No support for multi-tab/window handling
+    - Limited async/await capabilities for Promise
+    - Debugging challenges
+    - Heavy-weight (Performance overhead)
+    - Limited integration with external APIs/libraries
+    - Over-relying on 3rd party libraries for core functionalities
+    - Not beginner friendly. Require intermediate/advance level of understanding in JavaScript/Typescript
 
 ## Prerequisites
 
@@ -29,9 +69,9 @@ This project is a comprehensive Cypress-based automation framework designed for 
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/kwishna/cypress-cucumber-api-ui.git
-cd cypress-refresh-2024
-npm install
+    git clone https://github.com/kwishna/cypress-cucumber-api-ui.git
+    cd cypress-cucumber-api-ui
+    npm install
 ```
 
 For a complete list of available scripts, refer to the scripts section in package.json.
@@ -53,25 +93,37 @@ The project uses various configuration files:
 - cypress.env.json: Environment variables (create this file locally)
 
 # Writing Tests
-Tests are written using Cypress with Cucumber for BDD. Place your feature files in the cypress/e2e/features directory and corresponding step definitions in cypress/e2e/stepDefs and corresponding pages for page object model.
+Tests are written using Cypress with Cucumber for BDD.
+Place your feature files in the `cypress/e2e/features` directory and corresponding step definitions in `cypress/e2e/stepDefs` and pages in `cypress/e2e/pages` for page object model. Place test data files in `cypress/fixtures` folder.
 
 ```bash
-npm run e2e:run
+    npm run e2e:run
 ```
 
 The project supports multiple reporting formats:
 
 - Allure: npm run allure-report
 - Mochawesome: Generated automatically after test runs
+- Cucumber HTML, JSON reports
 
 # Continuous Integration
-The project is set up for CI/CD with scripts for running tests in different browsers and parallel execution.
+The project can be set up for CI/CD with scripts for running tests in different browsers and parallel execution.
+Integeration with `Azure DevOps`, `Jenkins` support (`azure-pipeline.yaml` and `Jenkinsfile` file will be added soon).
+Integeration with `Docker` support (`Dockerfile` and `docker-compose.yaml` file be added soon.)
+
+# Long term future Plans (Based on availability)
+    - GraphQL testing
+    - DB testing
+    - Kafka event streaming for real time execution status reporting
+    - Cypress plugin development
+    - Integration with GenAI (Using locally hosted `Ollama` or `OpenAI`)
 
 # Contributing
-Please read the CONTRIBUTING.md file (if available) for details on our code of conduct and the process for submitting pull requests.
+Please read the CONTRIBUTING.md file for details on our code of conduct and the process for submitting pull requests.
 
 # License
-This project is licensed under the ISC License.
+This project is Open to use. Feel free use it in your project for testing.
+Please thoroughly review the code before using it. Author of this project won't be responsible for any issue/loss.
 
 # Author
-Krishna Kumar Singh
+Krishna Kumar Singh - kwishna@gmail.com
