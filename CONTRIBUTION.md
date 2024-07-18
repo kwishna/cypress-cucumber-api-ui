@@ -1,6 +1,5 @@
-# Contributing to Cypress Refresh 2024
-
-We're excited that you're interested in contributing to Cypress Refresh 2024! This document outlines the process for contributing to this project.
+# Contributing to the project
+I am excited that you're interested in contributing to this project! This document outlines the process for contributing to this project.
 
 ## Getting Started
 
