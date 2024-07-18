@@ -1,6 +1,6 @@
-# Cypress (v13.13) - Testing tool for modern application
+# Practice Test - Cypress (v13.13) - Testing tool for modern application
 
-Re-learning cypress again with new enhanced cypress capabilities to refresh the concept.
+Learning cypress again with new enhanced cypress capabilities to refresh the concept.
 
 ## Project Overview
 
@@ -113,7 +113,7 @@ Integeration with `Docker` support (`Dockerfile` and `docker-compose.yaml` file 
 
 # Long term future Plans (Based on availability)
     - GraphQL testing
-    - DB testing
+    - SQL based DB testing
     - Kafka event streaming for real time execution status reporting
     - Cypress plugin development
     - Integration with GenAI (Using locally hosted `Ollama` or `OpenAI`)
