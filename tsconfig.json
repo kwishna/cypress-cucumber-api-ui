@@ -1,0 +1,27 @@
+{
+  "module": "commonjs",
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "target": "es5",
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "types": [
+      "cypress",
+      "node",
+      "cypress-wait-until",
+      "@testing-library/cypress",
+      "cypress-plugin-api"
+    ]
+  },
+  "include": [
+    "cypress/**/*.ts"
+  ],
+  "exclude": [
+    "cypress.config.ts",
+    "node_modules"
+  ],
+}

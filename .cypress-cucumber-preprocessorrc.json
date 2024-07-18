@@ -1,0 +1,28 @@
+{   
+    "filterSpecs": true,
+    "omitFiltered": true,
+    "filterSpecsMixedMode": "hide",
+    "screenshotOnRunFailure": true,
+    "stepDefinitions": "cypress/e2e/stepDefs/**/*.step*.{js,ts}",
+    "e2e": {
+        "specPattern": "cypress/e2e/features/**/*.{feature}",
+        "stepDefinitions": "cypress/e2e/stepDefs/**/*.step*.{js,ts}",
+        "filterSpecs": true,
+        "omitFiltered": true
+    },
+    "pretty": {
+        "enabled": true
+    },
+    "json": {
+        "enabled": true,
+        "output": "./reports/cucumber-reports/cucumber-report.json"
+    },
+    "html": {
+        "enabled": true,
+        "output": "./reports/cucumber-reports/cucumber-report.html"
+    },
+    "messages": {
+        "enabled": true,
+        "output": "./reports/cucumber-reports/cucumber-messages.ndjson"
+    }
+}

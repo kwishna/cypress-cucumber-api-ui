@@ -1,0 +1,78 @@
+{
+    "default": {
+        "format": [
+            "@cucumber/pretty-formatter",
+            [
+                "html",
+                "./reports/cucumber-reports/cucumber-report.html"
+            ],
+            [
+                "json",
+                "./reports/cucumber-reports/cucumber-report.json"
+            ],
+            [
+                "junit",
+                "./reports/cucumber-reports/cucumber-junit.xml"
+            ]
+        ],
+        "formatOptions": {
+            "colorsEnabled": true,
+            "theme": {
+                "datatable border": [
+                    "green"
+                ],
+                "datatable content": [
+                    "green",
+                    "italic"
+                ],
+                "docstring content": [
+                    "green",
+                    "italic"
+                ],
+                "docstring delimiter": [
+                    "green"
+                ],
+                "feature description": [
+                    "green"
+                ],
+                "feature keyword": [
+                    "bold",
+                    "green"
+                ],
+                "rule keyword": [
+                    "yellow"
+                ],
+                "scenario keyword": [
+                    "greenBright"
+                ],
+                "scenario name": [
+                    "green",
+                    "underline"
+                ],
+                "step keyword": [
+                    "bgGreen",
+                    "black",
+                    "italic"
+                ],
+                "step text": [
+                    "greenBright",
+                    "italic"
+                ],
+                "tag": [
+                    "green"
+                ]
+            }
+        },
+        "requireModule": [
+            "ts-node/register"
+        ],
+        "require": [
+            "cypress/e2e/features/**/*.step.ts",
+            "cypress/e2e/features/**/*.step.js",
+            "cypress/e2e/features/**/*.steps.ts",
+            "cypress/e2e/features/**/*.steps.js",
+            "cypress/e2e/features/**/*.hooks.ts",
+            "cypress/e2e/features/**/*.hooks.js"
+        ]
+    }
+}
