@@ -2,6 +2,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-wait-until" />
 /// <reference types="cypress-plugin-api" />
+/// <reference types="cypress-plugin-api" />
 
 interface CustomWorld {
     params: Record<string, any>;
@@ -49,10 +50,11 @@ declare namespace Cypress {
             options?: Partial<TypeOptions>
         ): Chainable<JQuery<HTMLElement>>
 
-        login(email: string, password: string): string
         frame(selector: string): Cypress.Chainable<unknown>
         mouseOver(selector: string): Cypress.Chainable<JQuery<any>>
+        assertList(subject: Array<JQuery<HTMLElement>>, expected: Array<string>): Cypress.Chainable<Subject>
         tab(options?: Partial<{shift: Boolean}>): Chainable
         cucumberLog(data: string, mediaType: string): void
+        schemaValidate(body: any, schema: any): void
     }
 }
