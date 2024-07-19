@@ -12,9 +12,12 @@
     "types": [
       "cypress",
       "node",
+      "chai",
       "cypress-wait-until",
       "@testing-library/cypress",
-      "cypress-plugin-api"
+      "cypress-plugin-api",
+      "@4tw/cypress-drag-drop",
+      "chai-arrays"
     ]
   },
   "include": [
