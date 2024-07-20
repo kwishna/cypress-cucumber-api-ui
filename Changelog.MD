@@ -6,4 +6,6 @@
     - Started working on Challenger API (Alan Richardson) testing practice web-service.
 
 #### 20 July 2024
+    - Added get Todo request.
+    - Added schema validation for get Todo request.
 

@@ -1,8 +1,9 @@
 /// <reference path="./node_modules/cypress/types/cypress.d.ts" />
 import { defineConfig } from "cypress";
-import { config } from "dotenv";
+// import { config } from "dotenv";
 const dotenvPlugin = require('cypress-dotenv');
-const ExcelJS = require("exceljs");
+import ExcelJS from "exceljs";
+import { JSONPath } from "jsonpath-plus";
 // import esbuild plugin
 import { createEsbuildPlugin } from './node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/esbuild';
 // import cucumber plugin
@@ -10,8 +11,8 @@ import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-prepro
 // Create Bundler
 import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 const { allureCypress } = require("allure-cypress/reporter");
-
-config({ path: "./.env"})
+import xml2js from 'xml2js';
+// config({ path: "./.env"})
 
 // const mysql = require('mysql') // For connecting to SQL Server
 // function queryTestDb(query, config) {
@@ -52,6 +53,48 @@ async function cucumberSetUp(
   // });
 }
 
+const xml = `<todos><todo><doneStatus>false</doneStatus><description/><id>1</id><title>scan paperwork</title></todo><todo><doneStatus>false</doneStatus><description/><id>10</id><title>install webcam</title></todo><todo><doneStatus>false</doneStatus><description/><id>2</id><title>file paperwork</title></todo><todo><doneStatus>false</doneStatus><description/><id>4</id><title>escalate late payments</title></todo><todo><doneStatus>false</doneStatus><description/><id>9</id><title>tidy meeting room</title></todo><todo><doneStatus>false</doneStatus><description/><id>3</id><title>process payments</title></todo><todo><doneStatus>false</doneStatus><description/><id>5</id><title>pay invoices</title></todo><todo><doneStatus>false</doneStatus><description/><id>6</id><title>process payroll</title></todo><todo><doneStatus>false</doneStatus><description/><id>7</id><title>train staff</title></todo><todo><doneStatus>false</doneStatus><description/><id>8</id><title>schedule meeting</title></todo></todos>`;
+
+function xmlToJs(xml: string) {
+  return new Promise((res, rej) => {
+    // Create a parser
+    const parser = new xml2js.Parser({ explicitArray: false });
+    // Parse the XML
+    parser.parseString(xml, (err, result) => {
+      if (err) {
+        console.error('Error parsing XML:', err);
+        rej(`Error parsing XML: ${err}`);
+      }
+      res(result);
+    });
+  });
+}
+
+async function readXlsxData() {
+  const workbook = await new ExcelJS.Workbook();
+  return await workbook.xlsx
+    .readFile("cypress/fixtures/userData.xlsx")
+    .then(function () {
+      console.log("test", workbook.getWorksheet("Sheet1"));
+      return workbook.getWorksheet("Sheet1");
+    });
+}
+
+function readXlsxFile(filePath: string, indexOrName?: number | string) {
+  const workbook = new ExcelJS.Workbook();
+  return new Promise((resolve, reject) => {
+    workbook.xlsx.readFile(filePath)
+      .then(function (wb) {
+        resolve(wb.getWorksheet(indexOrName));
+      })
+      .catch((e) => reject(`Failed to read excel workbook. ${e}`))
+  });
+}
+
+function jsonpath(json: any, path: string) {
+  return JSONPath({ json, path });
+}
+
 // @type {Cypress.Option}
 export default defineConfig({
   e2e: {
@@ -87,19 +130,11 @@ export default defineConfig({
       });
 
       // 4. .env Plugin
-      config = dotenvPlugin(config, { path: './.env' });
+      // config = dotenvPlugin(config, { path: './.env' });
 
-      on("task", {
-        async readXlsxData() {
-          const workbook = await new ExcelJS.Workbook();
-          return await workbook.xlsx
-            .readFile("cypress/fixtures/userData.xlsx")
-            .then(function () {
-              console.log("test", workbook.getWorksheet("Sheet1"));
-              return workbook.getWorksheet("Sheet1");
-            });
-        },
-      });
+      on("task", { readXlsxFile });
+      on("task", { xmlToJs });
+      on('task', { jsonpath });
 
       // on('task', { queryDb: query => { return queryTestDb(query, config) }, }); //For running sql query
 
@@ -128,7 +163,6 @@ export default defineConfig({
   // reporter: "cypress-multi-reporters",
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-
     ignoreVideos: false,
     videoOnFailOnly: true,
     quiet: false,

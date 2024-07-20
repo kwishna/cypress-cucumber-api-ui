@@ -45,10 +45,12 @@ This project is a comprehensive Cypress-based automation framework designed for 
     - Testing-library integeration
     - cypress-wait-until
     - cypress-recurse
-    - chai json schema validation
+    - json schema validation (ajv)
+    - parse using json path
     - Failure retry
     - Video recording
     - Execution step snapshots
+    - Soft assertions
 
 #### Limitations
     - No support for multi-tab/window handling
