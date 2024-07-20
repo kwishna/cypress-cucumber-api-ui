@@ -59,8 +59,9 @@ export class BaseApi {
         cy.api({
             url,
             method,
-            body,
-            headers
+            body: body,
+            headers,
+            failOnStatusCode: false
         }).as("response");
     }
 
@@ -68,7 +69,7 @@ export class BaseApi {
      * @description Verify the response.
      * @param respInfo response information.
      */
-    static verifySuccessfulResponse(respInfo?: { statusCode?: number, statusText?: string, duration?: number }) {
+    static verifySuccessfulResponse(respInfo?: { statusCode?: number, statusText?: string, duration?: number, errorMsg?: string }) {
         cy.get("@response")
             // @ts-ignore
             .then((response) => cy.wrap(response) as MyApiResponse)
@@ -83,6 +84,43 @@ export class BaseApi {
                 if (respInfo?.duration) {
                     expect(res.duration).to.be.lte(respInfo?.duration, `API response duration`);
                 }
+                if (respInfo?.errorMsg) {
+                    expect(res.body.errorMessages).to.include(respInfo?.errorMsg, `API response error message`);
+                }
+            });
+    }
+
+    /**
+     * @description Verify the response.
+     * @param respInfo response information.
+     */
+    static verifyFailedResponse(respInfo?: { statusCode?: number, statusText?: string, duration?: number, errorMsg?: string }) {
+        cy.get("@response")
+            // @ts-ignore
+            .then((response) => cy.wrap(response) as MyApiResponse)
+            .then((res) => {
+                expect(res.status).to.not.be.within(200, 299, "Response status shows failure.");
+                if (respInfo?.statusCode) {
+                    expect(res.status).to.equal(respInfo?.statusCode, `API response status code`);
+                }
+                if (respInfo?.statusText) {
+                    expect(res.statusText).to.equal(respInfo?.statusText, `API response status line text`);
+                }
+                if (respInfo?.duration) {
+                    expect(res.duration).to.be.lte(respInfo?.duration, `API response duration`);
+                }
+                if (respInfo?.errorMsg) {
+                    expect(res.body.errorMessages[0]).to.include(respInfo?.errorMsg, `API response error message`);
+                }
+            });
+    }
+
+    static verifyBlankResponseBody() {
+        cy.get("@response")
+            // @ts-ignore
+            .then((response) => cy.wrap(response) as MyApiResponse)
+            .then((res) => {
+                cy.wrap(res).its('body').should('be.undefined')
             });
     }
 }
