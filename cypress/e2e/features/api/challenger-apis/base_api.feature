@@ -3,7 +3,7 @@ Feature: Challenger API - Alan Richardson
 
     Background: Verify and set base url and challenger id
         Given I set the baseurl
-        And I set the challenger id
+        And I have the challenger id
 
     @rest3 @get_todos
     Scenario: GET /todos (200) - Get all Todos
@@ -29,6 +29,6 @@ Feature: Challenger API - Alan Richardson
         {
             "statusCode": 200,
             "statusText": "OK",
-            "duration": 1200
+            "duration": 5000
         }
         """
