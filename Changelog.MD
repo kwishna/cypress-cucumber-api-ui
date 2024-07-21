@@ -9,3 +9,11 @@
     - Added get Todo request.
     - Added schema validation for get Todo request.
 
+#### 21 July 2024
+    - Completed Basic API testing.
+    - Implemented JSON parsing, XML parsing for API response.
+    - Checking `sorry-cypress` Docker container for cypress dashboard and parallel execution.
+
+#### 22 July 2024
+    - Trying UI Testing Using Mocha Runner
+
