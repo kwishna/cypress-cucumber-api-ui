@@ -36,7 +36,7 @@ This project is a comprehensive Cypress-based automation framework designed for 
     - Hover capabilities
     - Shadow root handling
     - JQuery API support
-    - Stub, Spy, Mock
+    - Stub, Spy, Mock - [here](https://example.cypress.io/commands/spies-stubs-clocks)
     - Intercept routes
     - WebSocket protocol
     - Chrome Devtools
@@ -46,7 +46,9 @@ This project is a comprehensive Cypress-based automation framework designed for 
     - cypress-wait-until
     - cypress-recurse
     - json schema validation (ajv)
-    - parse using json path
+    - parse using jsonpath-plus
+    - xml parse using xml2js
+    - xml reading using exceljs
     - Failure retry
     - Video recording
     - Execution step snapshots
@@ -54,12 +56,14 @@ This project is a comprehensive Cypress-based automation framework designed for 
 
 #### Limitations
     - No support for multi-tab/window handling
-    - Limited async/await capabilities for Promise
+    - Limited parallel execution capability
+    - Major incompatibility issues within multiple 3rd party libraries
     - Debugging challenges
     - Heavy-weight (Performance overhead)
     - Limited integration with external APIs/libraries
     - Over-relying on 3rd party libraries for core functionalities
     - Not beginner friendly. Require intermediate/advance level of understanding in JavaScript/Typescript
+    - Requires deep understanding of Promise, Callback chaining
 
 ## Prerequisites
 
