@@ -3,3 +3,4 @@ allure-results
 reports
 *report*.*
 !reports.config.json
+.env

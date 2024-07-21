@@ -67,12 +67,12 @@
             "ts-node/register"
         ],
         "require": [
-            "cypress/e2e/features/**/*.step.ts",
-            "cypress/e2e/features/**/*.step.js",
-            "cypress/e2e/features/**/*.steps.ts",
-            "cypress/e2e/features/**/*.steps.js",
-            "cypress/e2e/features/**/*.hooks.ts",
-            "cypress/e2e/features/**/*.hooks.js"
+            "cypress/e2e/bdd/features/**/*.step.ts",
+            "cypress/e2e/bdd/features/**/*.step.js",
+            "cypress/e2e/bdd/features/**/*.steps.ts",
+            "cypress/e2e/bdd/features/**/*.steps.js",
+            "cypress/e2e/bdd/features/**/*.hooks.ts",
+            "cypress/e2e/bdd/features/**/*.hooks.js"
         ]
     }
 }

@@ -3,7 +3,6 @@
 /// <reference types="cypress-wait-until" />
 /// <reference types="cypress-plugin-api" />
 /// <reference types="cypress-plugin-api" />
-
 interface CustomWorld {
     params: Record<string, any>;
 }
