@@ -2,7 +2,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-wait-until" />
 /// <reference types="cypress-plugin-api" />
-/// <reference types="cypress-plugin-api" />
+/// <reference types="cypress-map" />
 interface CustomWorld {
     params: Record<string, any>;
 }
@@ -55,5 +55,13 @@ declare namespace Cypress {
         tab(options?: Partial<{shift: Boolean}>): Chainable
         cucumberLog(data: string, mediaType: string): void
         schemaValidate(body: any, schema: any): void
+        text(): Cypress.Chainable<string>
+        isVisible(): Cypress.Chainable<boolean>
+        isHidden(): Cypress.Chainable<boolean>
+        mustBeVisible(): Cypress.Chainable<Subject>
+        mustBeHidden(): Cypress.Chainable<Subject>
+        attr(name: string): Cypress.Chainable<string>
+        css(key: string): Cypress.Chainable<string>
+        byXpath(selector: string): Cypress.Chainable<JQuery<HTMLElement>>
     }
 }
