@@ -16,4 +16,8 @@
 
 #### 22 July 2024
     - Trying UI Testing Using Mocha Runner
+    - Set-up completed.
+    - Custom method added for Xpath support
+    - get attribute, get css value, get text
+
 
