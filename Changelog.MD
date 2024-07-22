@@ -20,4 +20,8 @@
     - Custom method added for Xpath support
     - get attribute, get css value, get text
 
+#### 23 July 2024
+    - Worked on visibility checking capability
+    - Added custom method isVisible, isHidden
+    - Added Chainable method for assertion - 'mustBeVisble', 'mustBeHidden'
 
