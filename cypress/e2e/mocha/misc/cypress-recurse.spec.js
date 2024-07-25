@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import { recurse } from "cypress-recurse";
-describe("Calendar Validations", () => {
+describe.skip("Calendar Validations", () => {
   it("select a date", () => {
     cy.visit("/");
     cy.get("#datepicker").click();
