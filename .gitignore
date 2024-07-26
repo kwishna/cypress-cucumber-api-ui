@@ -1,6 +1,5 @@
 node_modules
 allure-results
 reports
-*report*.*
 !reports.config.json
 .env

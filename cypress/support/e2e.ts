@@ -18,7 +18,6 @@
 // Import commands.js using ES2015 syntax:
 import './commands';
 import "allure-cypress";
-//For Cypress drag and drop plugin
 import '@4tw/cypress-drag-drop';
 import '@testing-library/cypress/add-commands';
 import 'cypress-mochawesome-reporter/register';
@@ -26,7 +25,19 @@ import 'cypress-wait-until';
 import "cypress-axe";
 import 'cypress-plugin-api';
 import 'cypress-recurse/commands';
-chai.use(require("chai-json-schema"));
+import '@cypress/xpath';
+import 'cypress-map';
+// import 'cypress-soft-assertions'; // removed - deprecated
+// import "cypress-cloud/support";
+
+// @ts-ignore
+// import registerCypressGrep from '@cypress/grep/src/support'
+// registerCypressGrep()
+
+// @ts-ignore
+import registerCypressGrep from '@cypress/grep'
+registerCypressGrep()
+
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
@@ -39,3 +50,12 @@ chai.use(require("chai-json-schema"));
 //     style.setAttribute('data-hide-command-log-request', '');
 //     app.document.head.appendChild(style);
 // }
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes('Special Error Message')) {
+        // Returning false here prevents Cypress from failing the test
+        return false;
+    }
+    // Allow other errors to fail the test
+    return true;
+});
