@@ -51,7 +51,9 @@ declare namespace Cypress {
 
         frame(selector: string): Cypress.Chainable<unknown>
         mouseOver(selector: string): Cypress.Chainable<JQuery<any>>
-        assertList(subject: Array<JQuery<HTMLElement>>, expected: Array<string>): Cypress.Chainable<Subject>
+        // assertList(subject: Array<JQuery<HTMLElement>>, expected: Array<string>): Cypress.Chainable<Subject>
+        assertList(expected: Array<string>): Cypress.Chainable<Subject>
+        getAttrList(attr: string): Cypress.Chainable<string[]>
         tab(options?: Partial<{shift: Boolean}>): Chainable
         cucumberLog(data: string, mediaType: string): void
         schemaValidate(body: any, schema: any): void
