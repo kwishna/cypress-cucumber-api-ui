@@ -2,6 +2,7 @@
 import { defineConfig } from "cypress";
 import { cypressCommonConfig } from "./configs/cypress.common.config";
 import { jsonpath, readXlsxFile, validateSchema, xmlToJs } from "./configs/cypress.taks";
+import { collectFailingTests } from "cypress-plugin-last-failed";
 // import { config } from "dotenv";
 const { allureCypress } = require("allure-cypress/reporter");
 
@@ -51,6 +52,9 @@ export default defineConfig({
 
       // 4. .env Plugin
       // config = dotenvPlugin(config, { path: './.env' });
+
+      // 5. Collect and run only failed tests
+      collectFailingTests(on, config);
 
       // @ts-ignore
       on("task", { validateSchema });
