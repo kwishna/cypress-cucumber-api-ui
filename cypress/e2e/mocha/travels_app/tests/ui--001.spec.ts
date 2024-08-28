@@ -22,7 +22,7 @@ describe("UI testing", function () {
             .should('not.be.visible', { timeout: 10000 });
     });
 
-    xit("E2E - Verify Logo & Nav Bar", async function () {
+    it("E2E - Verify Logo & Nav Bar", function () {
         // Ensure logo is visible
         cy.get('img.logo').should('be.visible');
 
@@ -55,7 +55,7 @@ describe("UI testing", function () {
         // Verify Nav Bar
         cy.get("ul li a.nav-link[href]:not([role='button'])")
             .should('have.length', 5)
-            .then($els => {
+            .then(($els) => {
                 const expectedTexts = ['Flights', 'Hotels', 'Tours', 'Cars', 'Blogs'];
                 $els.each((index, element) => {
                     expect(element.textContent.trim()).to.equal(expectedTexts[index]);
@@ -110,6 +110,10 @@ describe("UI testing", function () {
 
         cy.get("div.ShowSearchBox ul.nav li button")
             .each(($el, index, $els) => {
+
+                // to stop iteration at any moment
+                // return false
+
                 // Click on each button and verify it has the 'active' class
                 cy.wrap($el).click().should('have.class', 'active');
 
@@ -132,7 +136,7 @@ describe("UI testing", function () {
 
     });
 
-    xit("E2E - Better Search Options", function () {
+    it("E2E - Better Search Options", function () {
         cy.log('Verify Search Options')
 
         // Verify text of span elements
@@ -140,24 +144,24 @@ describe("UI testing", function () {
             .should('have.length', 4)
             .then(($els) => {
                 const texts = $els.map((i, el) => el.textContent?.trim()).get();
-                expect(texts).to.deep.equal(searchOptionsPage.expectedTexts);
+                expect(texts).to.deep.equal(searchOptionsPage.ALL_SEARCH_OPTIONS);
             });
 
         // Verify initial state
-        cy.get(searchOptionsPage.searchButtons)
+        cy.get(searchOptionsPage.searchOptionsButtons)
             .should('have.length', 4)
             .each(($el, index) => {
                 const isActive = index === 0;
                 cy.wrap($el)
                     .should(isActive ? 'have.class' : 'not.have.class', 'active')
-                    .invoke('text').invoke('trim').should('equal', searchOptionsPage.expectedTexts[index]);
+                    .invoke('text').invoke('trim').should('equal', searchOptionsPage.ALL_SEARCH_OPTIONS[index]);
             });
 
         // Click each button and verify active state
-        cy.get(searchOptionsPage.searchButtons)
+        cy.get(searchOptionsPage.searchOptionsButtons)
             .each(($el, index) => {
                 cy.wrap($el).click().should('have.class', 'active');
-                cy.get(searchOptionsPage.searchButtons).each(($btn, btnIndex) => {
+                cy.get(searchOptionsPage.searchOptionsButtons).each(($btn, btnIndex) => {
                     if (btnIndex !== index) {
                         cy.wrap($btn).should('not.have.class', 'active');
                     }
