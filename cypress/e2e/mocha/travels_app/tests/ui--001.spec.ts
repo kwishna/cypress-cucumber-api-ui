@@ -1,5 +1,5 @@
 /// <reference path="../../../../../node_modules/cypress/types/cypress.d.ts" />
-import { searchOptionsPage } from "../pages/searchOptionsPage";
+import { searchOptionsPage } from "../pages/search_page";
 
 describe("UI testing", function () {
 
