@@ -17,7 +17,7 @@ export class SearchOptionsPage {
     travellersLabel = "a.dropdown-btn.travellers";
     passengersTypesLabel = "a.dropdown-btn.travellers + div.dropdown-menu label strong";
     submitButton = "button#flights-search[type='submit']";
-    resultSpan = /\d{2,3} Flights Found/;
+    resultSpan = /\d{1,3} Flights Found/;
 
     // Expected Values
     ALL_SEARCH_OPTIONS = ['Flights', 'Hotels', 'Tours', 'Cars'];
@@ -92,6 +92,39 @@ export class SearchOptionsPage {
 
     }
 
+    selectPassengers(passengers: { adults: number, childs: number, infants: number } = { adults: 1, childs: 0, infants: 0 }) {
+        cy.get(this.passengersTypesLabel)
+            .then(($els) => {
+                const adults = $els.eq(0);
+                const isAdultsVisible = adults.is(':visible');
+
+                if (!isAdultsVisible) {
+                    cy.get(this.flightsSearchForm).find(this.passengersTypesLabel).should('be.visible').click();
+                }
+                else {
+                    Object.keys(passengers).forEach(key => {
+                        cy.get("a.dropdown-btn.travellers + div.dropdown-menu")
+                            .filter(':visible')
+                            .should('have.length', 1)
+                            // .should('be.visible')
+                            .within(() => {
+                                cy.get('label strong')
+                                    .contains(key, { matchCase: false })
+                                    .parent('label')
+                                    .siblings('div')
+                                    // .siblings('div.qtyBtn')
+                                    // .should('be.visible')
+                                    .find('input.qtyInput_flights')
+                                    .clear()
+                                    .type(passengers[key].toString())
+                                    .blur()
+                                    .should('have.value', passengers[key].toString());
+                            })
+                    })
+                }
+            });
+    }
+
     submitFlightSearch() {
         cy.get(this.submitButton).should('be.visible').click();
         cy.get('h2 span').contains(this.resultSpan, { timeout: 15000 }).should('be.visible');
@@ -110,6 +143,9 @@ export class SearchOptionsPage {
 
         // Verify Travellers
         this.verifyPassengerTypes();
+
+        // Select Passengers
+        this.selectPassengers({ adults: 2, childs: 1, infants: 1 });
 
         // Submit Flight Search
         this.submitFlightSearch();
