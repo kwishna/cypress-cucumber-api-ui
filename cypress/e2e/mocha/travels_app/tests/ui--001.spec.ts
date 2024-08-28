@@ -140,7 +140,7 @@ describe("UI testing", function () {
         cy.log('Verify Search Options')
 
         // Verify text of span elements
-        cy.get(searchOptionsPage.searchButtonSpans)
+        cy.get(searchOptionsPage.searchOptionsButtons)
             .should('have.length', 4)
             .then(($els) => {
                 const texts = $els.map((i, el) => el.textContent?.trim()).get();
