@@ -1,5 +1,5 @@
 /// <reference path="../../../../../node_modules/cypress/types/cypress.d.ts" />
-import { searchOptionsPage } from "../pages/search_page";
+import { searchPage } from "../pages/search_page";
 
 describe("UI testing", function () {
 
@@ -133,42 +133,39 @@ describe("UI testing", function () {
                 const texts = $els.map((i, el) => el.textContent?.trim()).get();
                 expect(texts).to.deep.equal(['Flights', 'Hotels', 'Tours', 'Cars']);
             });
-
     });
 
     it("E2E - Better Search Options", function () {
         cy.log('Verify Search Options')
 
         // Verify text of span elements
-        cy.get(searchOptionsPage.searchOptionsButtons)
+        cy.get(searchPage.searchOptionsButtons)
             .should('have.length', 4)
             .then(($els) => {
                 const texts = $els.map((i, el) => el.textContent?.trim()).get();
-                expect(texts).to.deep.equal(searchOptionsPage.ALL_SEARCH_OPTIONS);
+                expect(texts).to.deep.equal(searchPage.ALL_SEARCH_OPTIONS);
             });
 
         // Verify initial state
-        cy.get(searchOptionsPage.searchOptionsButtons)
+        cy.get(searchPage.searchOptionsButtons)
             .should('have.length', 4)
             .each(($el, index) => {
                 const isActive = index === 0;
                 cy.wrap($el)
                     .should(isActive ? 'have.class' : 'not.have.class', 'active')
-                    .invoke('text').invoke('trim').should('equal', searchOptionsPage.ALL_SEARCH_OPTIONS[index]);
+                    .invoke('text').invoke('trim').should('equal', searchPage.ALL_SEARCH_OPTIONS[index]);
             });
 
         // Click each button and verify active state
-        cy.get(searchOptionsPage.searchOptionsButtons)
+        cy.get(searchPage.searchOptionsButtons)
             .each(($el, index) => {
                 cy.wrap($el).click().should('have.class', 'active');
-                cy.get(searchOptionsPage.searchOptionsButtons).each(($btn, btnIndex) => {
+                cy.get(searchPage.searchOptionsButtons).each(($btn, btnIndex) => {
                     if (btnIndex !== index) {
                         cy.wrap($btn).should('not.have.class', 'active');
                     }
                 });
             });
-
-
     });
 
     afterEach('After Each - Immediately In Describe', function () {
