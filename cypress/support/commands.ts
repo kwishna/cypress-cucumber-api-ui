@@ -115,6 +115,14 @@ Cypress.Commands.add('mustBeHidden', { prevSubject: true }, (subject) => {
     return cy.wrap(subject);
 });
 
+Cypress.Commands.add('waitForElementToDisappear', (selector, timeout = 10000) => {
+    cy.get('body').then($body => {
+      if ($body.find(selector).length > 0) {
+        cy.get(selector, { timeout }).should('not.exist');
+      }
+    });
+});
+
 // Cypress.Screenshot.defaults({ screenshotOnRunFailure: false })
 // before(function before() {
 //   // Do not truncate assertion outputs of arrays and objects
