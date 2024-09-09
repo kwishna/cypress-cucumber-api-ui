@@ -17,7 +17,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
-import "allure-cypress";
+// import "allure-cypress";
 import '@4tw/cypress-drag-drop';
 import '@testing-library/cypress/add-commands';
 import 'cypress-mochawesome-reporter/register';

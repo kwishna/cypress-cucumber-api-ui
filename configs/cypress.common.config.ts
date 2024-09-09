@@ -39,7 +39,10 @@ export const cypressCommonConfig: Cypress.ConfigOptions<any> = {
   clientCertificates: [],
   defaultCommandTimeout: 4000,
   downloadsFolder: 'outputs/downloads',
-  env: {},
+  env: {
+    PORT: process.env.PORT,
+    USERNAME: process.env.USERNAME,
+  },
   execTimeout: 60000,
   experimentalStudio: false,
   experimentalWebKitSupport: false,

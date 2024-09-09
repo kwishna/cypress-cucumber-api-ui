@@ -10,7 +10,7 @@ import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esb
 import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
 // Create Bundler
 import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
-const { allureCypress } = require("allure-cypress/reporter");
+// const { allureCypress } = require("allure-cypress/reporter");
 import xml2js from 'xml2js';
 import Ajv, { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';

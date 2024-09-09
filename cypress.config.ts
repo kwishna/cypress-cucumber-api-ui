@@ -3,8 +3,9 @@ import { defineConfig } from "cypress";
 import { cypressCommonConfig } from "./configs/cypress.common.config";
 import { jsonpath, readXlsxFile, validateSchema, xmlToJs } from "./configs/cypress.taks";
 import { collectFailingTests } from "cypress-plugin-last-failed";
-// import { config } from "dotenv";
-const { allureCypress } = require("allure-cypress/reporter");
+import { config } from "dotenv";
+// const { allureCypress } = require("allure-cypress/reporter");
+config({ path: './.env' });
 
 // @type {Cypress.Option}
 export default defineConfig({
@@ -44,11 +45,11 @@ export default defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on);
 
       // 3. allure reporter
-      allureCypress(on, {
-        resultsDir: "./reports/allure-results",
-        environmentInfo: { "author": "Krishna" }
-        // videoOnFailOnly: true
-      });
+      // allureCypress(on, {
+      //   resultsDir: "./reports/allure-results",
+      //   environmentInfo: { "author": "Krishna" }
+      //   // videoOnFailOnly: true
+      // });
 
       // 4. .env Plugin
       // config = dotenvPlugin(config, { path: './.env' });
@@ -71,7 +72,7 @@ export default defineConfig({
     // baseUrl: "https://the-internet.herokuapp.com/",
     baseUrl: "https://www.phptravels.net/",
     excludeSpecPattern: ["*.feature", "*.json", "*.md", "*.html"],
-    testIsolation: true,
+    testIsolation: true
   },
   ...cypressCommonConfig
 });

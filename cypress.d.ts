@@ -62,8 +62,9 @@ declare namespace Cypress {
         isHidden(): Cypress.Chainable<boolean>
         mustBeVisible(): Cypress.Chainable<Subject>
         mustBeHidden(): Cypress.Chainable<Subject>
-        attr(name: string): Cypress.Chainable<string>
-        css(key: string): Cypress.Chainable<string>
+        attr(name: string): Cypress.Chainable<string | undefined>
+        css(key: string): Cypress.Chainable<string | undefined>
         byXpath(selector: string): Cypress.Chainable<JQuery<HTMLElement>>
+        waitForElementToDisappear(selector: string, timeout?: number): Cypress.Chainable<JQuery<HTMLElement>>
     }
 }
