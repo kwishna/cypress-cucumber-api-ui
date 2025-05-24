@@ -20,23 +20,30 @@ import './commands';
 // import "allure-cypress";
 import '@4tw/cypress-drag-drop';
 import '@testing-library/cypress/add-commands';
+import '@cypress-audit/lighthouse/commands'
 import 'cypress-mochawesome-reporter/register';
+// import 'cypress-mochawesome-reporter/cucumberSupport';
 import 'cypress-wait-until';
 import "cypress-axe";
 import 'cypress-plugin-api';
 import 'cypress-recurse/commands';
 import '@cypress/xpath';
 import 'cypress-map';
+import 'cypress-real-events'
+import { addCompareSnapshotCommand } from "cypress-visual-regression/dist/command";
 // import 'cypress-soft-assertions'; // removed - deprecated
 // import "cypress-cloud/support";
+import registerCypressGrep from '@cypress/grep/src/support'
+registerCypressGrep();
 
 // @ts-ignore
-// import registerCypressGrep from '@cypress/grep/src/support'
+// import registerCypressGrep from '@cypress/grep'
 // registerCypressGrep()
 
-// @ts-ignore
-import registerCypressGrep from '@cypress/grep'
-registerCypressGrep()
+addCompareSnapshotCommand({
+    errorThreshold: 0.1
+    // add more...
+})
 
 
 // Alternatively you can use CommonJS syntax:
