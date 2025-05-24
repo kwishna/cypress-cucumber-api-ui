@@ -17,7 +17,10 @@
       "@testing-library/cypress",
       "cypress-plugin-api",
       "@4tw/cypress-drag-drop",
-      "chai-arrays"
+      "chai-arrays",
+      "@cypress/grep",
+      "cypress-real-events"
+      // "cypress-axe"
     ]
   },
   "include": [

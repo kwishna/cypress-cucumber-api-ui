@@ -168,7 +168,7 @@ cy.get('selector').then(($element) => {
 });
 ----------------------------------------------------------------------------------------------
 */
-describe(`Cypress API - Querying - 1`, function () {
+describe(`Cypress API - Querying - 1`, { tags: ['@debug'] }, function () {
 
     before('Run once before - Set up environment', function () {
 
@@ -218,7 +218,7 @@ describe(`Cypress API - Querying - 1`, function () {
 
     const paragraph = "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through)."
 
-    it('A/B testing - 1 - url()', { tags: "abtest" }, function () {
+    it('A/B testing - 1 - url()', { tags: ["@abtest", '@debug'] }, function () {
         cy.get('[href="/abtest"]')
             .click()
             .url().should('include', '/abtest') // wait for url to match expected value
@@ -240,7 +240,7 @@ describe(`Cypress API - Querying - 1`, function () {
         cy.get('[href="/abtest"]')
             .click()
             .url().should('include', '/abtest');
-        
+
         cy.get('div#content').should('exist')
             .find('div.example').should('exist') // `find` within `div#content`, not `root`
             .find('h3').should('exist').should('contain.text', 'A/B')  // `find` within `div.example`, not `root`
