@@ -3,9 +3,11 @@ export const cypressCommonConfig: Cypress.ConfigOptions<any> = {
     runMode: 2,
     openMode: 0,
   },
-  // reporter: "cypress-multi-reporters",
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-multi-reporters",
+  // reporter: "cypress-sonarqube-reporter"
+  // reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
+    reporterEnabled: "cypress-sonarqube-reporter, mochawesome, cypress-mochawesome-reporter, mocha-junit-reporter",
     ignoreVideos: false,
     videoOnFailOnly: true,
     quiet: false,
@@ -29,7 +31,15 @@ export const cypressCommonConfig: Cypress.ConfigOptions<any> = {
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: true,
-    configFile: "reports.config.json"
+    // configFile: "reports.config.json",
+    mochaJunitReporterReporterOptions: {
+      mochaFile: "cypress/results/junit/results-[hash].xml",
+      testsuitesTitle: false,
+      toConsole: true,
+      useFullSuiteTitle: true,
+      // suiteTitleSeparatedBy: ".",
+      reportTitle: "Cypress Tests",
+    }
   },
   includeShadowDom: true,
   watchForFileChanges: false,
