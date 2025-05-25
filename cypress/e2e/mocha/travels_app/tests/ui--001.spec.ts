@@ -1,7 +1,7 @@
 /// <reference path="../../../../../node_modules/cypress/types/cypress.d.ts" />
 import { searchPage } from "../pages/search_page";
 
-describe("UI testing", function () {
+describe("UI testing", { tags: ['@uitest'] }, function () {
 
     before('Run once before - Set up environment', function () {
         cy.log('Run once - Set up environment');
