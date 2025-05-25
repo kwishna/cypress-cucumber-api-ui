@@ -19,7 +19,8 @@
       "@4tw/cypress-drag-drop",
       "chai-arrays",
       "@cypress/grep",
-      "cypress-real-events"
+      "cypress-real-events",
+      "allure-cypress"
       // "cypress-axe"
     ]
   },
