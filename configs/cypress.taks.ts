@@ -5,17 +5,16 @@ const dotenvPlugin = require('cypress-dotenv');
 import ExcelJS from "exceljs";
 import { JSONPath } from "jsonpath-plus";
 // import esbuild plugin
-import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
+// import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
 // import cucumber plugin
-import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+// import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
 // Create Bundler
-import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+// import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 // const { allureCypress } = require("allure-cypress/reporter");
 import xml2js from 'xml2js';
 import Ajv, { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
 // import { cloudPlugin } from "cypress-cloud/plugin";
-// config({ path: "./.env"})
 
 import mysql from 'mysql2'; // For connecting to SQL Server
 
@@ -122,4 +121,8 @@ export function encodeString(value: string) {
 
 export function decodeString(value: string) {
   return value ? Buffer.from(value, "base64").toString("ascii") : value;
+}
+
+export function sleep (milli: number) {
+  return new Promise((resolve, reject) => setTimeout(resolve, milli));
 }
