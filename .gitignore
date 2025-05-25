@@ -4,3 +4,7 @@ reports
 !reports.config.json
 .env
 *.png
+results/
+dist/
+test-results/
+.idea
