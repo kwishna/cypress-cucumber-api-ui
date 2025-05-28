@@ -1,6 +1,6 @@
 {
   "module": "commonjs",
-  "moduleResolution": "node",
+  "moduleResolution": "nodenext",
   "compilerOptions": {
     "esModuleInterop": true,
     "baseUrl": "./",
@@ -20,7 +20,8 @@
       "chai-arrays",
       "@cypress/grep",
       "cypress-real-events",
-      "allure-cypress"
+      "allure-cypress",
+      "@badeball/cypress-cucumber-preprocessor"
       // "cypress-axe"
     ]
   },
