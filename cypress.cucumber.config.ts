@@ -5,6 +5,7 @@ const dotenvPlugin = require('cypress-dotenv');
 import ExcelJS from "exceljs";
 import { JSONPath } from "jsonpath-plus";
 // import esbuild plugin
+// @ts-ignore
 import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
 // import cucumber plugin
 import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';

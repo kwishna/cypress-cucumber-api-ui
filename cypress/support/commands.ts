@@ -26,7 +26,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands';
-import { attach } from '@badeball/cypress-cucumber-preprocessor';
+// import { attach } from '@badeball/cypress-cucumber-preprocessor';
 
 Cypress.Commands.add(
     'typeRandomWords',
@@ -59,7 +59,8 @@ Cypress.on("uncaught:exception", (msg): boolean => {
 
 Cypress.Commands.add("cucumberLog", function (data: string, mediaType: string = "text/json"): void {
     cy.log(data)
-    attach(data, mediaType)
+    require('@badeball/cypress-cucumber-preprocessor').attach(data, mediaType)
+    // attach(data, mediaType)
     cy.wait(1000);
 });
 

@@ -10,6 +10,7 @@ import { afterRunHook, beforeRunHook } from "cypress-mochawesome-reporter/lib";
 // import { createHtmlReport } from "axe-html-reporter";
 import { lighthouse, prepareAudit } from "@cypress-audit/lighthouse";
 import { config } from "dotenv";
+// @ts-ignore
 import { allureCypress } from "allure-cypress/reporter";
 config({ path: './.env' });
 
