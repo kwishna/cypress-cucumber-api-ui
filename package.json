@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf ./dist ./out",
+    "lint": "eslint --max-warnings=0 .",
     "test": "cypress open --browser=chrome",
     "format": "prettier --ignore-path .gitignore --check '**/*.ts'",
     "e2e": "cypress run --e2e",
@@ -33,7 +34,8 @@
     "cy:sorryCypress": "cypress-cloud run --parallel --record --key somekey --ci-build-id hello-cypress",
     "cy:tags:onlyInCloud": "cypress run --browser chrome --config-file ./cypress.config.ts --tag \":first\"",
     "report:merge": "mochawesome-merge cypress/reports/mochawesome/*.json > combined.json",
-    "report:generate": "marge combined.json --reportDir cypress/reports/html"
+    "report:generate": "marge combined.json --reportDir cypress/reports/html",
+    "cucumber:test": "cucumber-js"
   },
   "keywords": [
     "cypress",
