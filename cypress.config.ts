@@ -10,6 +10,7 @@ import { afterRunHook, beforeRunHook } from "cypress-mochawesome-reporter/lib";
 // import { createHtmlReport } from "axe-html-reporter";
 import { lighthouse, prepareAudit } from "@cypress-audit/lighthouse";
 import { config } from "dotenv";
+// @ts-ignore
 import { allureCypress } from "allure-cypress/reporter";
 config({ path: './.env' });
 
@@ -21,6 +22,7 @@ export default defineConfig({
     experimentalMemoryManagement: true,
     experimentalStudio: false,
     async setupNodeEvents(
+      // on: Cypress.PluginEvents,
       _on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions
     ): Promise<Cypress.PluginConfigOptions> {
@@ -52,9 +54,9 @@ export default defineConfig({
       // });
 
       const allurePlugin = allureCypress(on, config, {
-        resultsDir: "./reports/allure-results",
+        resultsDir: "./results/allure-results",
         environmentInfo: { "author": "Krishna" },
-        videoOnFailOnly: true,
+        // videoOnFailOnly: true,
         links: {
           jira: {
             nameTemplate: "%s",
@@ -128,7 +130,8 @@ export default defineConfig({
 
       on('after:run', async (details) => {
         allurePlugin.onAfterRun(details);
-        await afterRunHook();
+        // await afterRunHook();
+        return require('cypress-sonarqube-reporter/mergeReports')(details);
       })
 
 

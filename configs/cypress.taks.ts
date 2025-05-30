@@ -1,20 +1,9 @@
 /// <reference path="../node_modules/cypress/types/cypress.d.ts" />
-import { defineConfig } from "cypress";
-// import { config } from "dotenv";
-const dotenvPlugin = require('cypress-dotenv');
 import ExcelJS from "exceljs";
 import { JSONPath } from "jsonpath-plus";
-// import esbuild plugin
-// import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
-// import cucumber plugin
-// import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
-// Create Bundler
-// import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
-// const { allureCypress } = require("allure-cypress/reporter");
 import xml2js from 'xml2js';
 import Ajv, { ErrorObject } from 'ajv';
 import addFormats from 'ajv-formats';
-// import { cloudPlugin } from "cypress-cloud/plugin";
 
 import mysql from 'mysql2'; // For connecting to SQL Server
 
